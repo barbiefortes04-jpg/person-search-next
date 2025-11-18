@@ -88,7 +88,7 @@ export default function McpSetupPage() {
         <div className="space-y-4">
           <p>Your MCP server endpoint is:</p>
           
-          <CodeBlock code="https://your-app.vercel.app/api/mcp" language="text" />
+          <CodeBlock code="https://person-search-next.vercel.app/api/mcp" language="text" />
 
           <div>
             <h4 className="font-semibold mb-2">Find your Vercel URL:</h4>
@@ -97,7 +97,7 @@ export default function McpSetupPage() {
               items={[
                 { label: <>Go to <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">vercel.com</a></> },
                 { label: "Open your project dashboard" },
-                { label: <>Copy the deployment URL (e.g., <code className="bg-muted px-1 rounded text-xs">https://person-search-abc123.vercel.app</code>)</> },
+                { label: <>Copy the deployment URL (e.g., <code className="bg-muted px-1 rounded text-xs">https://person-search-next.vercel.app</code>)</> },
                 { label: <>Add <code className="bg-muted px-1 rounded text-xs">/api/mcp</code> to the end</> },
               ]}
               className="ml-2"
@@ -106,8 +106,8 @@ export default function McpSetupPage() {
 
           <Alert>
             <AlertDescription>
-              <strong>Example:</strong> If your app is at <code className="bg-muted px-2 py-1 rounded text-xs">https://person-search-abc123.vercel.app</code>, 
-              your MCP endpoint is <code className="bg-muted px-2 py-1 rounded text-xs">https://person-search-abc123.vercel.app/api/mcp</code>
+              <strong>Example:</strong> If your app is at <code className="bg-muted px-2 py-1 rounded text-xs">https://person-search-next.vercel.app</code>, 
+              your MCP endpoint is <code className="bg-muted px-2 py-1 rounded text-xs">https://person-search-next.vercel.app/api/mcp</code>
             </AlertDescription>
           </Alert>
         </div>
@@ -139,7 +139,7 @@ export default function McpSetupPage() {
       "args": [
         "-y",
         "mcp-remote",
-        "https://your-app.vercel.app/api/mcp"
+        "https://person-search-next.vercel.app/api/mcp"
       ]
     }
   }
@@ -150,7 +150,7 @@ export default function McpSetupPage() {
           <Alert>
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              <strong>Important:</strong> Replace <code className="bg-muted px-1 rounded text-xs">https://your-app.vercel.app/api/mcp</code> with 
+              <strong>Important:</strong> Replace <code className="bg-muted px-1 rounded text-xs">https://person-search-next.vercel.app/api/mcp</code> with 
               your actual Vercel deployment URL + <code className="bg-muted px-1 rounded text-xs">/api/mcp</code>
             </AlertDescription>
           </Alert>

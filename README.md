@@ -8,7 +8,7 @@ Person Search is a Next.js application built with **Next.js 15.5** and **React 1
 
 ## Live Demo
 
-**Production URL:** [Coming Soon - Deploying to Vercel]  
+**Production URL:** [https://person-search-next.vercel.app](https://person-search-next.vercel.app)  
 **GitHub Repository:** [https://github.com/barbiefortes04-jpg/person-search-next](https://github.com/barbiefortes04-jpg/person-search-next)
 
 ## Features

@@ -1,27 +1,32 @@
-# Person Search - OAuth Secured Edition
+# Person Search - Next.js 15 + Auth.js + Prisma
 
 ## Description
 
-Person Search is a Next.js application upgraded to leverage **Next.js 15.5** and **React 19**. This OAuth-secured edition demonstrates advanced search functionality using Next.js Server Components with **Google OAuth authentication**, **Prisma ORM**, and **PostgreSQL database** integration. Users must authenticate before accessing the Person CRUD operations, which include searching, adding, editing, and deleting people from a database-backed system.
+Person Search is a Next.js application built with **Next.js 15.5** and **React 19**. This application demonstrates advanced search functionality using Next.js Server Components with **Google OAuth authentication**, **Prisma ORM**, and **PostgreSQL database** integration. Users must authenticate before accessing the Person CRUD operations, which include searching, adding, editing, and deleting people from a database-backed system.
 
-**Originally forked from [Callum Bir's Person Search](https://github.com/gocallum/person-search)** and modified to implement OAuth authentication, database persistence with Prisma, and comprehensive security documentation for an ECA project submission.
+**Originally forked from [Callum Bir's Person Search](https://github.com/gocallum/person-search)** and enhanced for the ECA Tech Bootcamp curriculum. Enhanced by [barbiefortes04-jpg](https://github.com/barbiefortes04-jpg) with Model Context Protocol (MCP) integration, comprehensive setup documentation, and production-ready deployment features.
 
-The upgrade to Next.js 15.5 introduced significant breaking changes, including a shift in how `params` and `searchParams` are handled, leading to a complete redesign of the `user-search` component to fully align with Server Components.
+## Live Demo
+
+🌐 **Production URL:** [Coming Soon - Deploying to Vercel]  
+🔗 **GitHub Repository:** [https://github.com/barbiefortes04-jpg/person-search-next](https://github.com/barbiefortes04-jpg/person-search-next)
 
 ## Features
 
 - 🔐 **OAuth 2.0 Authentication** with Google (Auth.js v5)
 - 🛡️ **Protected Routes** with middleware-based authorization
 - 💾 **Database-Backed CRUD** operations with Prisma ORM
-- 🔍 **Asynchronous search** functionality
+- 🔍 **Asynchronous search** functionality with real-time filtering
 - 👤 **Session Management** with user menu and sign-out
-- 📚 **Comprehensive Documentation** pages (/auth-setup, /security, /github)
-- 🎨 **Responsive design** using Tailwind CSS
+- 📚 **Comprehensive Documentation** pages (/auth-setup, /security, /github, /database)
+- 🎨 **Responsive design** using Tailwind CSS and shadcn/ui
 - ♿ **Accessibility-focused** UI components from Radix UI
 - 🚀 **Serverless-Ready** with Neon PostgreSQL
 - 🔒 **Secure credential storage** with environment variables
 - ⚡ **Edge Runtime compatible** middleware
 - 📝 **Type-safe** forms with Zod validation
+- 🤖 **Model Context Protocol (MCP)** server integration
+- 📋 **Sample Data Seeding** with 10 pre-loaded person records
 
 ## Technologies Used
 
@@ -45,43 +50,43 @@ The upgrade to Next.js 15.5 introduced significant breaking changes, including a
 - **Neon PostgreSQL** - Serverless PostgreSQL with connection pooling
 - **Vercel** - Deployment platform optimized for Next.js
 
-### Minimum Node.js Version
-
-The application has been tested with **Node.js 20.17.0**. Features such as ECMAScript modules and async server components require Node.js 20 or newer, making this the minimum requirement.
-
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 20.17.0 or newer
-- npm
+- npm or pnpm
+- Google Cloud Console account (for OAuth)
+- Neon Database account (for PostgreSQL)
 
-### Installation
+### Local Development Setup
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/marcos-njp/person-search.git
-   cd person-search
+   git clone https://github.com/barbiefortes04-jpg/person-search-next.git
+   cd person-search-next/person-search-next15
    ```
 
 2. Install dependencies:
 
    ```bash
+   npm install
+   # or
    pnpm install
    ```
 
 3. Set up environment variables:
 
-   Create a `.env` file in the root directory with the following:
+   Create a `.env.local` file in the `person-search-next15` directory:
 
    ```env
    # Database (Neon PostgreSQL)
-   DATABASE_URL="postgresql://USER:PASSWORD@HOST/DATABASE?sslmode=require"
-   DATABASE_URL_UNPOOLED="postgresql://USER:PASSWORD@HOST/DATABASE?sslmode=require"
-
+   DATABASE_URL="postgresql://username:password@host/database?sslmode=require"
+   
    # Auth.js
-   AUTH_SECRET="your-secret-from-npx-auth-secret"
+   NEXTAUTH_SECRET="your-secret-from-npx-auth-secret"
+   NEXTAUTH_URL="http://localhost:3000"
    
    # Google OAuth (from Google Cloud Console)
    GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
@@ -91,8 +96,8 @@ The application has been tested with **Node.js 20.17.0**. Features such as ECMAS
 4. Set up the database:
 
    ```bash
-   pnpm db:push
-   pnpm db:seed
+   npx prisma db push
+   npx tsx prisma/seed.ts
    ```
 
 5. Configure Google OAuth:
@@ -103,10 +108,74 @@ The application has been tested with **Node.js 20.17.0**. Features such as ECMAS
 ### Running the Development Server
 
 ```bash
+npm run dev
+# or
 pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) - you'll be redirected to sign in with Google.
+
+## Deployment to Vercel
+
+### Automatic Deployment (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Configure environment variables in Vercel dashboard
+4. Deploy automatically
+
+### Manual Deployment
+
+1. Install Vercel CLI:
+   ```bash
+   npm i -g vercel
+   ```
+
+2. Login and deploy:
+   ```bash
+   vercel login
+   vercel --prod
+   ```
+
+### Required Environment Variables for Production
+
+In your Vercel dashboard, add these environment variables:
+
+```env
+DATABASE_URL=your-neon-postgresql-connection-string
+NEXTAUTH_SECRET=your-production-secret
+NEXTAUTH_URL=https://your-vercel-domain.vercel.app
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+```
+
+**Important:** Update your Google OAuth redirect URIs to include your production domain:
+- Add: `https://your-vercel-domain.vercel.app/api/auth/callback/google`
+
+## Database Setup
+
+This application uses Neon PostgreSQL for production and development. The database includes:
+
+- **Person Table**: Stores person records with id, name, email, phoneNumber, createdAt, updatedAt
+- **Auth.js Tables**: User, Account, Session, and VerificationToken tables for authentication
+- **Sample Data**: 10 pre-loaded person records for testing
+
+### Database Schema
+
+```sql
+-- Person table for CRUD operations
+CREATE TABLE "Person" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "email" TEXT NOT NULL,
+  "phoneNumber" TEXT NOT NULL,
+  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP(3) NOT NULL
+);
+
+-- Auth.js tables (generated automatically)
+-- User, Account, Session, VerificationToken
+```
 
 ## How It Works (Next.js 15.1 & React 19)
 
@@ -284,25 +353,34 @@ export function UserEditDialog({ user }: { user: UserFormData }) {
 ## Credits
 
 **Original Project:** [Callum Bir's Person Search](https://github.com/gocallum/person-search)  
-**OAuth Edition:** Modified by Marcos for ECA project submission  
-**Repository:** [https://github.com/marcos-njp/person-search](https://github.com/marcos-njp/person-search)
+**Enhanced Version:** [barbiefortes04-jpg](https://github.com/barbiefortes04-jpg) - ECA Tech Bootcamp Project  
+**Repository:** [https://github.com/barbiefortes04-jpg/person-search-next](https://github.com/barbiefortes04-jpg/person-search-next)
 
-### Key Modifications
-- Added Google OAuth 2.0 authentication with Auth.js
-- Implemented Prisma ORM with PostgreSQL database
+### Key Enhancements
+- Added Google OAuth 2.0 authentication with Auth.js v5
+- Implemented Prisma ORM with PostgreSQL database (Neon)
 - Created protected routes with Edge Runtime middleware
-- Added comprehensive security documentation
+- Added comprehensive security and setup documentation
 - Converted from mock data to database-backed CRUD operations
-### Note: Future Refactoring for `ActionState` with React 19
+- Integrated Model Context Protocol (MCP) server
+- Added sample data seeding and production deployment guides
 
-The `MutableDialog` component currently uses a custom `ActionState` type to handle the result of form submissions. However, React 19 introduces built-in support for `ActionState` in Server Actions, which can simplify this implementation. 
+### ECA Tech Bootcamp Curriculum
+This enhanced version was developed as part of the ECA Tech Bootcamp curriculum provided by [AusBiz Consulting](https://ausbizconsulting.com.au). The project demonstrates full-stack Next.js development with modern authentication, database integration, and production deployment practices.
 
-#### Improvements to Make:
-- Replace the custom `ActionState` interface with React 19's built-in `ActionState`.
-- Use the `ActionState` directly within the form submission logic to align with React 19 best practices.
-- Refactor error handling and success notifications to leverage React's server-side error handling.
+## Contributing
 
-This will be addressed in a future update to ensure the `MutableDialog` component remains aligned with React 19's capabilities.
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contact
+
+**Enhanced by:** [barbiefortes04-jpg](https://github.com/barbiefortes04-jpg)  
+**Original by:** Callum Bir - [@callumbir](https://twitter.com/callumbir)  
+**Project Link:** [https://github.com/barbiefortes04-jpg/person-search-next](https://github.com/barbiefortes04-jpg/person-search-next)
 
 ## Contributing
 

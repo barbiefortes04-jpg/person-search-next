@@ -8,25 +8,25 @@ Person Search is a Next.js application built with **Next.js 15.5** and **React 1
 
 ## Live Demo
 
-🌐 **Production URL:** [Coming Soon - Deploying to Vercel]  
-🔗 **GitHub Repository:** [https://github.com/barbiefortes04-jpg/person-search-next](https://github.com/barbiefortes04-jpg/person-search-next)
+**Production URL:** [Coming Soon - Deploying to Vercel]  
+**GitHub Repository:** [https://github.com/barbiefortes04-jpg/person-search-next](https://github.com/barbiefortes04-jpg/person-search-next)
 
 ## Features
 
-- 🔐 **OAuth 2.0 Authentication** with Google (Auth.js v5)
-- 🛡️ **Protected Routes** with middleware-based authorization
-- 💾 **Database-Backed CRUD** operations with Prisma ORM
-- 🔍 **Asynchronous search** functionality with real-time filtering
-- 👤 **Session Management** with user menu and sign-out
-- 📚 **Comprehensive Documentation** pages (/auth-setup, /security, /github, /database)
-- 🎨 **Responsive design** using Tailwind CSS and shadcn/ui
-- ♿ **Accessibility-focused** UI components from Radix UI
-- 🚀 **Serverless-Ready** with Neon PostgreSQL
-- 🔒 **Secure credential storage** with environment variables
-- ⚡ **Edge Runtime compatible** middleware
-- 📝 **Type-safe** forms with Zod validation
-- 🤖 **Model Context Protocol (MCP)** server integration
-- 📋 **Sample Data Seeding** with 10 pre-loaded person records
+- **OAuth 2.0 Authentication** with Google (Auth.js v5)
+- **Protected Routes** with middleware-based authorization
+- **Database-Backed CRUD** operations with Prisma ORM
+- **Asynchronous search** functionality with real-time filtering
+- **Session Management** with user menu and sign-out
+- **Comprehensive Documentation** pages (/auth-setup, /security, /github, /database)
+- **Responsive design** using Tailwind CSS and shadcn/ui
+- **Accessibility-focused** UI components from Radix UI
+- **Serverless-Ready** with Neon PostgreSQL
+- **Secure credential storage** with environment variables
+- **Edge Runtime compatible** middleware
+- **Type-safe** forms with Zod validation
+- **Model Context Protocol (MCP)** server integration
+- **Sample Data Seeding** with 10 pre-loaded person records
 
 ## Technologies Used
 

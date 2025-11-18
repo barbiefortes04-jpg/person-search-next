@@ -172,7 +172,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Jherilyn\\person-search-next\\person-search-next15\\app\\generated\\prisma",
+      "value": "C:\\Users\\Jherilyn\\person-search-next2\\app\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -186,7 +186,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Jherilyn\\person-search-next\\person-search-next15\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Jherilyn\\person-search-next2\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -200,6 +200,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {

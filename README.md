@@ -65,7 +65,7 @@ Person Search is a Next.js application built with **Next.js 15.5** and **React 1
 
    ```bash
    git clone https://github.com/barbiefortes04-jpg/person-search-next.git
-   cd person-search-next/person-search-next15
+   cd person-search-next
    ```
 
 2. Install dependencies:
@@ -78,7 +78,7 @@ Person Search is a Next.js application built with **Next.js 15.5** and **React 1
 
 3. Set up environment variables:
 
-   Create a `.env.local` file in the `person-search-next15` directory:
+   Create a `.env.local` file in the root directory:
 
    ```env
    # Database (Neon PostgreSQL)

@@ -11,8 +11,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import pkg from "./app/generated/prisma/index.js";
-const { PrismaClient } = pkg;
+import { PrismaClient } from "@prisma/client";
 
 // Initialize Prisma Client
 const prisma = new PrismaClient();
